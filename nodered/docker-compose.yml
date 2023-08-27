@@ -4,9 +4,11 @@ services:
   nodered:
     image: nodered/node-red
     container_name: nodered
+    environment:
+      - TZ=Europe/Madrid
     restart: always
     ports:
       - "1880:1880"
     volumes:
-      - /nodered/data:/data
-    network_mode: host
+      - /data:/data
+    #network_mode: host
