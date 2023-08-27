@@ -1,0 +1,8 @@
+# Grafana 
+mkdir /docker/grafana 
+mkdir /docker/grafana/var 
+mkdir /docker/grafana/var/lib 
+mkdir /docker/grafana/var/lib/grafana 
+
+# ejecucion grafana 
+docker run --name grafana -itd --user $(id -u) --restart=always -p 3000:3000 -v /data:/var/lib/grafana --net=host grafana/grafana
