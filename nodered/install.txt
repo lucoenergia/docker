@@ -1,0 +1,1 @@
+docker run --name nodered -itd --restart=always -p 1880:1880 -v /home/vcm/docker/nodered/data/:/data  nodered/node-red
