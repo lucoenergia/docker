@@ -1,0 +1,13 @@
+# It creates a service called node-exporter which is using the quay.io/prometheus/node-exporter:latest image.
+# More info here https://quay.io/repository/prometheus/node-exporter?tab=info
+version: '3.1'
+services:
+    node-exporter:
+        image: quay.io/prometheus/node-exporter:latest
+        container_name: node_exporter
+        command: '--path.rootfs=/host' # specifies the startup command for the node-exporter container.
+        restart: always # will ensure that the Docker daemon always restarts the container irrespective of the exit status.
+        network_mode: "host" # it means the container's network stack is not isolated from the docker host.
+        pid: "host" # means the container will share the host’s PID namespace.
+        volumes:
+            - "/:/host:ro,rslave" # maps the / directory from the host into /host inside the Docker container as read-only.
